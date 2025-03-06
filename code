@@ -26,8 +26,8 @@ map = [
     [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
     [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
     [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
-    [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
-    [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
+    [2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2],
+    [2, 2, 2, 0, 2, 0, 2, 2, 2, 0, 0, 2, 2, 2, 2, 2, 0, 2, 2, 2],
     [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
     [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
     [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
@@ -40,7 +40,7 @@ map = [
      
 Link = pygame.image.load(r"C:\Users\822326\Downloads\link.png")  # load your spritesheet
 Link.set_colorkey((255, 0, 255))  # this makes bright pink (255, 0, 255) transparent (sort of)
-
+brick = pygame.image.load(r"C:\Users\822326\Pictures\brick2.png")
 # player variables
 xpos = 400  # xpos of player
 ypos = 400  # ypos of player
@@ -129,9 +129,21 @@ while not gameover:
         print("left collision!")
        
     #right collision
-    if map[int((ypos) / 40)][int((xpos + 15) / 40)] == 2:
+    elif map[int((ypos) / 40)][int((xpos + 15) / 40)] == 2:
         xpos-=3   
-        print("right collision!") 
+        print("right collision!")
+        
+        
+   # up collision
+    if map[int((ypos - 5) / 40)][int((xpos) / 40)] == 2:
+        ypos += 3
+        print("up collision!")
+        
+        # down collision
+    if map[int((ypos + 15) / 40)][int((xpos) / 40)] == 2:
+        ypos -= 3
+        print("down collision!") 
+   
 
 
     xpos+=vx #update player xpos
